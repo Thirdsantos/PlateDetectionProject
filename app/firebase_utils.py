@@ -21,7 +21,7 @@ def upload_plate_data(data):
     try:
         latest_id = db.reference('latest_id').get()
         if latest_id is None:
-            latest_id = 0
+            latest_id = 1
         else:
             latest_id += 1
 
