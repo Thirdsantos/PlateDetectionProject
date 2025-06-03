@@ -19,7 +19,7 @@ def index():
 
         response = requests.post(
             'https://api.platerecognizer.com/v1/plate-reader/',
-            data={'regions': regions},
+            data={'regions': regions, 'mmc' : 'true'},
             files={'upload': file},
             headers={'Authorization': f'Token {API_TOKEN}'}
         )
