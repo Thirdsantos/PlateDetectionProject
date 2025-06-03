@@ -31,17 +31,18 @@ def index():
                 top_result = result['results'][0]
                 plate_number = top_result.get('plate')
                 vehicle_type = top_result.get('vehicle', {}).get('type', 'Unknown')
+                timestamp = result.get('timestamp', 'N/A')
 
-            timestamp = result.get('timestamp', 'N/A')
-            
-            data_result = {
-                "Plate Number": plate_number,
-                "Vehicle Type": vehicle_type,
-                "Timestamp": timestamp
-            }
+                data_result = {
+                    "Plate Number": plate_number,
+                    "Vehicle Type": vehicle_type,
+                    "Timestamp": timestamp
+                }
 
-            upload_plate_data(data_result)
-            
-            return jsonify(data_result), 200
-        
+                upload_plate_data(data_result)
+                return jsonify(data_result), 200
+
+       
+            return jsonify({'error': 'No plate found in the image'}), 404
+
         return jsonify({'error': 'Failed to process image'}), 400
