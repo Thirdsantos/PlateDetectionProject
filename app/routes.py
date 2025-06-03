@@ -31,12 +31,14 @@ def index():
                 top_result = result['results'][0]
                 plate_number = top_result.get('plate')
                 vehicle_type = top_result.get('vehicle', {}).get('type', 'Unknown')
+                color = top_result.get('vehicle', {}).get('color', 'Unknown')
                 timestamp = result.get('timestamp', 'N/A')
 
                 data_result = {
                     "Plate Number": plate_number,
                     "Vehicle Type": vehicle_type,
-                    "Timestamp": timestamp
+                    "Timestamp": timestamp,
+                    "Color": color
                 }
 
                 upload_plate_data(data_result)

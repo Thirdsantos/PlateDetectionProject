@@ -31,7 +31,8 @@ def upload_plate_data(data):
         ref.set({
             'plate_number': data.get('Plate Number', 'Not detected'),
             'vehicle_type': data.get('Vehicle Type', 'Unknown'),
-            'timestamp': data.get('Timestamp', datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+            'timestamp': data.get('Timestamp', datetime.now().strftime('%Y-%m-%d %H:%M:%S')),
+            'color': data.get('Color', 'Unknown')
         })
         return True
     except Exception as e:
